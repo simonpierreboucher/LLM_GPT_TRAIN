@@ -1,3 +1,4 @@
+# This detailed version includes explanations for each import and their purpose in the context of deep learning and data handling with PyTorch.
 # Importing the tiktoken library which is used for tokenization.
 import tiktoken
 
@@ -12,6 +13,7 @@ import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 
 
+# This detailed version includes explanations for the class initialization, the methods, and the parameters used within the class. It provides a clearer understanding of how the dataset is created and utilized.
 # Define a custom dataset class that inherits from PyTorch's Dataset class
 class GPTDatasetV1(Dataset):
     def __init__(self, txt, tokenizer, max_length, stride):
@@ -63,6 +65,7 @@ class GPTDatasetV1(Dataset):
         return self.input_ids[idx], self.target_ids[idx]
 
 
+# This detailed version includes explanations for the function, its parameters, and the steps involved in creating the DataLoader. It provides a clearer understanding of how the DataLoader is initialized and used.
 
 def create_dataloader_v1(txt, batch_size=4, max_length=256, stride=128, shuffle=True, drop_last=True, num_workers=0):
     """
@@ -100,7 +103,7 @@ def create_dataloader_v1(txt, batch_size=4, max_length=256, stride=128, shuffle=
 
 
 
-
+# This detailed version includes explanations for the class initialization, the methods, and the parameters used within the class. It provides a clearer understanding of how the multi-head attention mechanism is implemented and utilized.
 # Define a class for Multi-Head Attention, inheriting from nn.Module
 class MultiHeadAttention(nn.Module):
     def __init__(self, d_in, d_out, context_length, dropout, num_heads, qkv_bias=False):
@@ -188,7 +191,7 @@ class MultiHeadAttention(nn.Module):
         return context_vec
 
 
-
+# This detailed version includes explanations for the class initialization, the methods, and the parameters used within the class. It provides a clearer understanding of how the layer normalization mechanism is implemented and utilized.
 # Define a class for Layer Normalization, inheriting from nn.Module
 class LayerNorm(nn.Module):
     def __init__(self, emb_dim):
@@ -227,7 +230,7 @@ class LayerNorm(nn.Module):
 
 
 
-
+# This detailed version includes explanations for the class initialization and the forward method, providing a clearer understanding of how the GELU activation function is implemented and utilized. The GELU (Gaussian Error Linear Unit) activation function is a smooth approximation of the ReLU activation function and is commonly used in modern neural network architectures.
 # Define a class for GELU activation function, inheriting from nn.Module
 class GELU(nn.Module):
     def __init__(self):
@@ -254,7 +257,7 @@ class GELU(nn.Module):
 
 
 
-
+# This detailed version includes explanations for the class initialization, the forward method, and the structure of the feedforward neural network. It provides a clearer understanding of how the feedforward network is implemented and utilized within a larger neural network architecture. The feedforward network typically includes linear transformations and activation functions, with the given example using the GELU activation function and two linear layers.
 # Define a class for FeedForward neural network, inheriting from nn.Module
 class FeedForward(nn.Module):
     def __init__(self, cfg):
@@ -290,7 +293,7 @@ class FeedForward(nn.Module):
         return self.layers(x)
 
 
-
+# This detailed version includes explanations for the class initialization, the forward method, and the components of the transformer block. It provides a clearer understanding of how the transformer block is structured, incorporating multi-head attention, layer normalization, feed-forward networks, and residual connections.
 # Define a class for a Transformer Block, inheriting from nn.Module
 class TransformerBlock(nn.Module):
     def __init__(self, cfg):
@@ -352,7 +355,7 @@ class TransformerBlock(nn.Module):
 
         return x
 
-
+# This detailed version includes explanations for the class initialization, the forward method, and the components of the GPT model. It provides a clearer understanding of how the GPT model is structured, including token and positional embeddings, stacked transformer blocks, final normalization, and output layer.
 # Define a class for a GPT model, inheriting from nn.Module
 class GPTModel(nn.Module):
     def __init__(self, cfg):
@@ -420,8 +423,7 @@ class GPTModel(nn.Module):
         return logits
 
 
-
-
+# This detailed version includes explanations for the function, its parameters, and the steps involved in generating text. It provides a clearer understanding of how the text generation process works using a language model, including context cropping, prediction, and appending the predicted tokens to the running sequence.
 def generate_text_simple(model, idx, max_new_tokens, context_size):
     """
     Generate text using the given model by predicting the next token iteratively.
@@ -459,7 +461,7 @@ def generate_text_simple(model, idx, max_new_tokens, context_size):
     return idx
 
 
-
+# This detailed version includes explanations for the main block of the script, covering the configuration setup, model initialization, tokenizer usage, text encoding, and the text generation process. It provides a clearer understanding of how the script sets up the GPT model, processes the input text, generates new text, and decodes the output.
 if __name__ == "__main__":
     # Configuration dictionary for the GPT model
     GPT_CONFIG_124M = {
@@ -511,7 +513,7 @@ if __name__ == "__main__":
     print("Output length:", len(out[0]))
     print("Output text:", decoded_text)
 
-
+# This detailed version includes explanations for each import, providing a clearer understanding of the purpose and usage of each imported module or library in the context of the script.
 # Import the os module for interacting with the operating system
 import os
 
