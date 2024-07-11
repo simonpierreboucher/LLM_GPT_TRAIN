@@ -1,3 +1,8 @@
+# Python code for LLM gpt like transformer training
+# Simon-Pierre Boucher 
+# Data loading from text file, tokeniser, transformer, decoder, inference 
+
+
 # This detailed version includes explanations for each import and their purpose in the context of deep learning and data handling with PyTorch.
 # Importing the tiktoken library which is used for tokenization.
 import tiktoken
